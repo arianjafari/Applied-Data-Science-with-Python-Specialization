@@ -1,0 +1,363 @@
+
+<!-- saved from url=(0048)https://chrisalbon.com/python/cleaning_text.html -->
+<html lang="en" class="gr__chrisalbon_com"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript">
+
+(function() {
+	window.trackingUtils=function(h,j,f,l,i,c,a,e){var g={},n=new RegExp("/(ref=[\\w]+)/?","i"),b=function(q){return q&&encodeURIComponent(q).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");},p=(function(){var q=document.createElement("a");q.href=(window.location!==window.parent.location)?document.referrer:document.location;return q.protocol+"//"+q.hostname+((q.port===""||q.port==="80"||q.port==="443")?"":(":"+q.port))+(q.pathname.indexOf("/")!==0?("/"+q.pathname):q.pathname);}()),o=(function(){return b(p);}()),k=function(q,s,t,r){if(typeof t==="string"&&t!==""){if(q.search===""){q.search="?"+s+"="+t;}else{if(!q.search.match(new RegExp("[?&]"+s+"="))){q.search=q.search.replace(/\?/,"?"+s+"="+t+"&");}else{if(r){q.search=q.search.replace(new RegExp(s+"=([^&]*)"),s+"="+t);}}}}return q;},d=function(s,q,r){if(typeof r==="string"&&r!==""){if(!s.match(/\?/)){s=s+"?"+q+"="+r;}else{if(!s.match(q)){s=s.replace(/\?/,"?"+q+"="+r+"&");}}}return s;},m=function(r){var q=(typeof a!=="undefined")?a:0;if(typeof r!=="undefined"){q=r;}return q;};g.addRefUrls=function(v,w,r,q){var x=new RegExp("^http://.*(amazon|endless|myhabit|amazonwireless|javari|smallparts)\\.(com|ca|co\\.jp|de|fr|co\\.uk|cn|it|es)/.*","i"),s,u,t;for(t=0;t<v.length;t++){v[t].rel="nofollow";s=String(v[t].href);if(u=s.match(x)){v[t].href=g.addTrackingParameters(v[t],w,r,q);}}};g.addRefRefUrl=function(q){return k(q,"ref-refURL",o);};g.getRefRefUrl=function(){return o;};g.getRawRefUrl=function(){return p;};g.addSignature=function(r,q,s){return k(k(r,"sig",q),"sigts",s);};g.addLinkCode=function(r,q){return k(r,"linkCode",q);};g.addTrackingId=function(r,q){return k(r,"tag",q);};g.addLinkId=function(q,r){return k(q,"linkId",r);};g.addSubtag=function(q,r){return k(q,"ascsubtag",r);};g.addCreativeAsin=function(q,r){return k(k(q,"creativeASIN",r),"adId",r);};g.addAdType=function(r,q){return k(r,"adType",q);};g.addAdMode=function(q,r){return k(q,"adMode",r);};g.addAdFormat=function(r,q){return k(r,"adFormat",q);};g.addImpressionTimestamp=function(q,r){if(typeof r==="number"){r=r.toString();}return k(q,"impressionTimestamp",r);};g.convertToRedirectedUrl=function(q,t,r){var s=document.createElement("a");s.setAttribute("href",t);if(typeof r!=="undefined"){k(s,r,b(q.getAttribute("href")),true);}else{s.setAttribute("href",t+"/"+s.getAttribute("href"));}q.setAttribute("href",s.getAttribute("href"));return q;};g.getImpressionToken=function(){return c;};g.getClickUrl=function(){return i;};g.addImpressionToken=function(r,s){var q=m(s);if(typeof c==="string"&&c!==""){k(r,"imprToken",c);if(typeof q!=="undefined"){k(r,"slotNum",q);}}return r;};g.addImpressionTokenStr=function(s,r){var q=m(r);if(typeof c==="string"&&c!==""){s=d(s,"imprToken",c);if(typeof q!=="undefined"){s=d(s,"slotNum",q);}}return s;};g.addTrackingParameters=function(w,x,v,A,t,q,u,s,r,B,z,y){return g.addSignature(g.addCreativeAsin(g.addLinkId(g.addTrackingId(g.addSubtag(g.addLinkCode(g.addRefRefUrl(g.addImpressionToken(g.addRefMarker(g.addAdType(g.addAdMode(g.addAdFormat(g.addImpressionTimestamp(w,y),z),B),r),t))),v),e),A),x),q),u,s);};g.addRefMarker=function(r,t){var s,q=false;if(typeof t==="undefined"){return r;}if(s=r.pathname.match(n)){r.pathname=r.pathname.replace(s[1],"ref="+t);}else{q=(r.pathname.charAt(r.pathname.length-1)==="/");r.pathname=r.pathname+(q?"":"/")+"ref="+t;}return r;};g.getRefMarker=function(q){var r;if(r=q.pathname.match(n)){return r[1].substr(4);}else{return undefined;}};g.makeForesterCall=function(s){var q=undefined,r;s.refUrl=document.location.href;if(typeof JSON!=="undefined"){r=JSON.stringify(s);}else{if(typeof amzn_assoc_utils!=="undefined"&&typeof amzn_assoc_utils.stringify==="function"){r=amzn_assoc_utils.stringify(s);}else{return;}}if(typeof l==="string"){q=l+"?assoc_payload="+encodeURIComponent(r);}if(typeof q!=="undefined"){(new Image()).src=q;}};g.recordImpression=function(r,q,t,s){t.linkCode=r;t.trackingId=q;g.makeForesterCall(t);if(typeof s==="undefined"||!s){(new Image()).src=f+"?l="+r+"&t="+q+"&o="+h+"&cb="+(new Date()).getTime();}};g.addAAXClickUrls=function(r){var t,s,q;if(typeof r==="undefined"||typeof i==="undefined"){return;}for(s=0;s<r.length;s++){q=String(r[s].href);if(q.indexOf(i)<0){t=i+q;r[s].href=t;}}};g.addAAXClickUrl=function(q){if(typeof q==="undefined"||typeof q==="undefined"||q.indexOf(i)===0){return q;}return i+q;};g.updateLinks=function(r,t){var s,q;if(typeof t!=="function"){return;}for(s=0;s<r.length;s++){q=String(r[s].href);r[s].href=t(q);}};g.elementInViewPort=function(q){var r=q.getBoundingClientRect(),s=(r.top>=0&&r.left>=0&&r.bottom<=(window.innerHeight||document.documentElement.clientHeight)&&r.right<=(window.innerWidth||document.documentElement.clientWidth));return{posX:r.left+window.pageXOffset,posY:r.top+window.pageYOffset,inViewPort:s};};g.initialViewabilityCall=function(w,r,t,v){var q=undefined,s,u={adViewability:[{above_the_fold:w,topPos:r,leftPos:t,slotNum:v}]};if(typeof JSON!=="undefined"){s=JSON.stringify(u);}else{if(typeof amzn_assoc_utils!=="undefined"&&typeof amzn_assoc_utils.stringify==="function"){s=amzn_assoc_utils.stringify(u);}else{s="";}}if(typeof l==="string"){q=l+s;}if(typeof q!=="undefined"){(new Image()).src=q+"&cb="+(new Date()).getTime();}};g.makeViewabilityCall=function(t){var q=undefined,r,s={adViewability:[{viewable:true,slotNum:t}]};if(typeof JSON!=="undefined"){r=JSON.stringify(s);}else{if(typeof amzn_assoc_utils!=="undefined"&&typeof amzn_assoc_utils.stringify==="function"){r=amzn_assoc_utils.stringify(s);}else{r="";}}if(typeof l==="string"){q=l+r;}if(typeof q!=="undefined"){(new Image()).src=q+"&cb="+(new Date()).getTime();}};return g;};window.elemTracker=function(b){var a={};a.trackElements=function(d,c){var f,e;if(typeof d!=="undefined"&&d.length>0&&typeof c==="function"){window.addEventListener("scroll",function(){for(f=0;f<d.length;f++){e=b.elementInViewPort(d[f]);if(e.inViewPort){c();}}},false);}};return a;};
+	var amznAutoTaggerMaker=function(j,l,m){var G={CA:"ca",CN:"cn",IN:"in",DE:"de",FR:"fr",GB:"co.uk",JP:"co.jp",US:"com"},D={CA:[],CN:[],IN:[],DE:["javari"],FR:["javari"],GB:["javari"],JP:["javari"],US:["smallparts","amazonwireless","endless","myhabit"]},v=(function(){var J=-1,I={};I.getNextSlotNum=function(){return ++J;};return I;}()),d,z,H=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.clientHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight),g=Math.max(document.body.scrollWidth,document.body.offsetWidth,document.documentElement.clientWidth,document.documentElement.scrollWidth,document.documentElement.offsetWidth),u={totalDocWidth:g,totalDocHeight:H,logType:"onetag_pageload",pageTitle:document.title},A="w50",o="w61",n="g12",k={},q=new RegExp("%3F"),r=[],F=new Object(),B=false,C="",c="",p=0,b=0,y=0,t=new RegExp("amzn.to"),e=new RegExp(j.redirectorEndPoint),w=function(I){return I.nextSibling&&I.nextSibling.tagName==="IMG"&&I.nextSibling.hasAttribute("src")&&(I.nextSibling.getAttribute("src").search(/ir-[a-z]{2}\.amazon-adsystem\.com/)>-1||I.nextSibling.getAttribute("src").search(/www\.assoc-amazon\.*/)>-1);},f=function(I){if(!I.href.match(e)){I.href=j.redirectorEndPoint+I.href;}},x=function(S,X){var T=new RegExp("/(ref=[\\w]+)/?","i"),O,W=false,J,M,N=false,R=S.search.match(/\?tag=([^&]+)|&tag=([^&]+)|\?tag-value=([^&]+)|&tag-value=([^&]+)|\?tag_value=([^&]+)|&tag_value=([^&]+)|\?t=([^&]+)|&t=([^&]+)/),L=S.search.match(/\?tag=|&tag=|\?tag-value=|&tag-value=|\?tag_value=|&tag_value=|\?t=|&t=/),I=S.search.match(/(linkCode|link_code|lc)=([^&]+)/i),Q=l.elementInViewPort(S),V={autoTagged:false,overwritten:false,geoRedirected:false,atf:Q.inViewPort},K=v.getNextSlotNum(),P={destinationURL:S.href,slotNum:K,atfInFirstLoad:Q.inViewPort,posX:Q.posX,posY:Q.posY,logType:"onetag_textlink"},U=w(S);V.slotNum=K;if(S.pathname.charAt(S.pathname.length-1)!=="/"){S.pathname=S.pathname+"/";}if(S.search===""){S.search="?imprToken="+l.getImpressionToken()+"&slotNum="+K;}else{S.search=S.search.replace(/\?/,"?imprToken="+l.getImpressionToken()+"&slotNum="+K+"&");}if(j.enableAutoTagging){V.autoTagged=true;if(R){if(j.overwrite){for(M=1;M<9;M++){if(R[M]!=undefined){S.search=S.search.replace(R[M],X);break;}}V.overwritten=true;W=true;}}else{if(L){S.search=S.search.replace(/tag=/,"tag="+X);W=true;}else{S.search=S.search.replace(/\?/,"?tag="+X+"&");W=true;}}}if(I&&typeof j.overridableLinkCodes[I[2]]!=="undefined"){N=true;}if(I&&!N){J=I[2];}else{J=W?A:o;}if(I){P.oldLinkCode=I[2];S.search=S.search.replace(I[2],J);}else{S.search=S.search.replace(/\?/,"?linkCode="+J+"&");}if(O=S.pathname.match(T)){S.pathname=S.pathname.replace(O[1],"ref=as_at");}else{S.pathname=S.pathname+"ref=as_at";}if(W){l.recordImpression(J,X,P,U);}else{if(typeof R!=="undefined"&&R instanceof Array&&R.length>=M+1&&typeof R[M]==="string"){l.recordImpression(J,R[M],P,U);}else{l.recordImpression(J,"",P,U);}}if(k.shouldBeGeoRedirected()){V.geoRedirected=true;f(S);}if(S.hasAttribute("data-amzn-asin")&&!S.search.match("creativeASIN")){S.search=S.search.replace(/\?/,"?creativeASIN="+S.getAttribute("data-amzn-asin")+"&");}l.initialViewabilityCall(Q.inViewPort,Q.posX,Q.posY,K);S.href=l.addAAXClickUrl(S.href);return V;},E=function(I){if(I.href.match(q)){z=I.href.split(q);I.href=z[0]+"?"+decodeURIComponent(z[1]);}},a=function(N,J,I,M){var L,K;for(L=0;L<J.length;L++){for(K=0;K<I.length;K++){if(window.addEventListener){J[L].addEventListener(I[K],M,false);}else{J[L].attachEvent("on"+I[K],M);}N.push({el:J[L],h:M,t:I[K]});}}},h=function(){var I="";for(i=0;i<j.itemRefs.length;i++){if(typeof j.itemRefs[i].type!=="undefined"&&j.itemRefs[i].type==="ASIN"&&typeof j.itemRefs[i].sourceLink!=="undefined"&&String(j.itemRefs[i].sourceLink).match(t)!==null&&typeof j.itemRefs[i].destinationLink!=="undefined"){F[j.itemRefs[i].sourceLink]=j.itemRefs[i].destinationLink;if(C!==""){I=",";}C=C+I+j.itemRefs[i].sourceLink;p++;}}},s=function(J,I){m.trackElements([J],function(){if(typeof I!==undefined&&I.slotNum!==undefined&&(I.viewed===undefined||!I.viewed)){l.makeViewabilityCall(I.slotNum);I.viewed=true;}});};if(j.locale!=undefined){d=j.locale;}else{d="US";}k.shouldBeGeoRedirected=function(){return j.enableGeoRedirection&&(j.viewerCountry!==""&&j.viewerCountry!=="ZZ"&&j.region!==""&&j.region!==j.viewerCountry);};k.publisherCallBack=function(){window["amzn_assoc_client_cb_"+j.adUnitSlotNum]({type:"onload",data:{},widget:k});};k.decorateLinkElement=function(I){E(I);linkProperties=x(I,j.trackingId);s(I,linkProperties);return linkProperties;};k.tagLinks=function(Z){var ab,aa,J,U,ad,W=[],af=0,R,T,ac,Y,ae,I,S,P=0,L=0,V=0,K=0,O=0,M=0,N,Q,X="";J=G[d];U=D[d];ad=new RegExp("^(http|https)://(www|[\\w\\-\\.]+)?amazon\\.("+J+")/","i");if(U){for(af=0;af<U.length;af++){R=J;if(J=="co.jp"){R="co.jp|jp";}W[af]=new RegExp("^(http|https)://(www\\.)?("+U[af]+")\\.("+R+")/","i");}}T=Z.getElementsByTagName("a");if(!B){h();B=true;}for(ab=0;ab<T.length;ab++){S=undefined;ac=String(T[ab].href);if(Y=ac.match(ad)){S=k.decorateLinkElement(T[ab]);}else{if(j.isShortLinksSupported&&(ae=ac.match(t))!==null){b++;if(c!==""){X=",";}c=c+X+T[ab].href;N=F[T[ab].href];if(typeof N!=="undefined"){y++;T[ab].setAttribute("href",N);S=k.decorateLinkElement(T[ab]);}else{if(k.shouldBeGeoRedirected()){S=k.decorateLinkElement(T[ab]);}}}else{for(I=0;I<W.length;I++){if(Y=ac.match(W[I])){k.decorateLinkElement(T[ab]);}}}}if(typeof S!=="undefined"){if(S.autoTagged){L++;}if(S.overwritten){M++;}if(S.geoRedirected){V++;}if(S.atf){K++;}else{O++;}P++;}}u.numLinks=P;u.numAutoTaggedLinks=L;u.autoTaggingEnabled=j.enableAutoTagging;u.geoRedirectEnabled=j.enableGeoRedirection;u.numLinksATF=K;u.numLinksBTF=O;u.shortLinksInLivePool=C;u.shortLinksInPage=c;u.shortLinksInLivePoolCount=p;u.shortLinksInPageCount=b;u.shortLinksMatchCount=y;l.recordImpression(j.linkCode,j.trackingId,u);};return k;};
+    var spec = {
+        trackingId : "chrisalbon-20",
+        region : "US",
+        overwrite : false,
+        enableAutoTagging : false,
+        linkCode : "w49",
+        overridableLinkCodes :  {   "am1": ""   , "am2": ""   , "am3": ""   , "as1": ""   , "as2": ""   , "as3": ""   , "as4": ""   , "li1": ""   , "li2": ""   , "li3": ""   , "ll1": ""   , "ll2": ""   },
+        enableGeoRedirection : true,
+        redirectorEndPoint : "https://assoc-redirect.amazon.com/g/r/",
+        adUnitSlotNum : "0",
+        itemRefs : [],
+        isShortLinksSupported : true,
+        viewerCountry : "US"
+    }, trackingUtils = window.trackingUtils(
+        "1",
+        "//fls-na.amazon-adsystem.com/1/associates-ads/1/OP/r/json",
+        "//ir-na.amazon-adsystem.com/e/ir",
+        "https://aax-us-east.amazon-adsystem.com/x/px/QmWBRaH4syLLYMsV-Lt4Hl4AAAFgkdDVbwEAAAFKAWyIcBc/", "https://aax-us-east.amazon-adsystem.com/x/c/QmWBRaH4syLLYMsV-Lt4Hl4AAAFgkdDVbwEAAAFKAWyIcBc/", "1icU0nxP3oEIlWllotPFOg"
+    );
+
+    window.amznAutoTagger = amznAutoTaggerMaker(spec, trackingUtils, window.elemTracker(trackingUtils));
+    window.amznAutoTagger.tagLinks(document);
+    window.amznAutoTagger.publisherCallBack();
+}());
+
+ //# sourceURL=dynscript-0.js</script></head><body data-gr-c-s-loaded="true">v
+
+
+
+      
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Notes on Data Science, Machine Learning, &amp; Artificial Intelligence">
+    <meta name="author" content="Chris Albon">
+    <link rel="icon" href="https://chrisalbon.com/favicon.ico">
+
+    <title>Cleaning Text - Python</title>
+
+    <!-- JQuery -->
+    <script async="" src="./Cleaning Text - Python_files/analytics.js.download"></script><script src="./Cleaning Text - Python_files/jquery.min.js.download"></script>
+    <script>
+        window.jQuery || document.write('<script src="../theme/js/jquery.min.js"><\/script>')
+    </script>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="./Cleaning Text - Python_files/bootstrap.css">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link rel="stylesheet" type="text/css" href="./Cleaning Text - Python_files/ie10-viewport-bug-workaround.css">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="./Cleaning Text - Python_files/style.css">
+    <link rel="stylesheet" type="text/css" href="./Cleaning Text - Python_files/notebooks.css">
+    <link href="./Cleaning Text - Python_files/css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+     <link href="http://chrisalbon.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Machine Learning and Artificial Intelligence Full RSS Feed">         <link href="http://chrisalbon.com/feeds/python.rss.xml" type="application/rss+xml" rel="alternate" title="Machine Learning and Artificial Intelligence Categories RSS Feed">    
+
+    <meta name="tags" content="Data Wrangling">
+
+    <meta name="google-site-verification" content="7RLmddm4HbzdQLpwH2LH94_vBNmcaMGZSEhmmF5n0NM">
+
+
+
+
+    <div class="navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://chrisalbon.com/">Chris Albon</a>
+            </div>
+            <div class="navbar-collapse collapse" id="searchbar">
+
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                      <a href="https://chrisalbon.com/python/cleaning_text.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ML/AI Notes<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="https://chrisalbon.com/#Blog">Blog</a></li>
+                          <li><a href="https://chrisalbon.com/#Machine-Learning">Machine Learning</a></li>
+                          <li><a href="https://chrisalbon.com/#Deep-Learning">Deep Learning</a></li>
+                          <li><a href="https://chrisalbon.com/#Algorithms">Algorithms</a></li>
+                          <li><a href="https://chrisalbon.com/#Python">Python</a></li>
+                          <li><a href="https://chrisalbon.com/#Statistics">Statistics</a></li>
+                          <li><a href="https://chrisalbon.com/#Cloud-Computing">Cloud Computing</a></li>
+                          <li><a href="https://chrisalbon.com/#Javascript">Javascript</a></li>
+                          <li><a href="https://chrisalbon.com/#SQL">SQL</a></li>
+                          <li><a href="https://chrisalbon.com/#Scala">Scala</a></li>
+                          <li><a href="https://chrisalbon.com/#Regex">Regex</a></li>
+                          <li><a href="https://chrisalbon.com/#Mathematics">Mathematics</a></li>
+                      </ul>
+                  </li>
+                    <li class="dropdown">
+                        <a href="https://chrisalbon.com/python/cleaning_text.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://chrisalbon.com/pages/about.html">About Chris</a></li>
+                            <li><a href="https://github.com/chrisalbon">GitHub</a></li>
+                            <li><a href="https://twitter.com/chrisalbon">Twitter</a></li>
+                            <li><a href="https://www.linkedin.com/in/chrisralbon">LinkedIn</a></li>
+                            <li><a href="https://pinboard.in/u:chrisalbon">Pinboard</a></li>
+                        </ul>
+                    </li>
+
+
+                    <!--<li class="dropdown">
+                        <a href="../feeds/blog.rss.xml">Blog RSS</a>
+                    </li>-->
+
+
+                </ul>
+
+                <form class="navbar-form" action="https://chrisalbon.com/search.html" onsubmit="return validateForm(this.elements[&#39;q&#39;].value);">
+                    <div class="form-group" style="display:inline;">
+                        <div class="input-group" style="display:table;">
+                            <span class="input-group-addon" style="width:1%;"><span class="glyphicon glyphicon-search"></span></span>
+                            <input class="form-control search-query" name="q" id="tipue_search_input" placeholder="e.g. scikit KNN, pandas merge" required="" autocomplete="off" type="text">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+
+
+
+    <!-- end of header section -->
+    <div class="container">
+<div class="alert alert-warning advert" role="alert">
+    Want to learn machine learning? Use my <a href="https://machinelearningflashcards.com/" class="alert-link">machine learning flashcards</a>.
+</div>
+
+<section id="content" class="body">
+    <header>
+    <h1>
+      Cleaning Text
+    </h1>
+<ol class="breadcrumb">
+    <li>
+        <time class="published" datetime="2016-05-01T12:00:00-07:00">
+            01 May 2016
+        </time>
+    </li>
+    <li>Python</li>
+    <li>Data Wrangling</li>
+</ol>
+</header>
+<div class="article_content">
+<h2>Create some raw text</h2>
+<div class="codehilite"><pre style="border: 1px solid rgb(222, 222, 222);"><span></span><span class="c1"># Create a list of three strings.</span>
+<span class="n">incoming_reports</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"We are attacking on their left flank but are losing many men."</span><span class="p">,</span> 
+               <span class="s2">"We cannot see the enemy army. Nothing else to report."</span><span class="p">,</span> 
+               <span class="s2">"We are ready to attack but are waiting for your orders."</span><span class="p">]</span>
+</pre></div>
+
+
+<h2>Seperate by word</h2>
+<div class="codehilite"><pre style="border: 1px solid rgb(222, 222, 222);"><span></span><span class="c1"># import word tokenizer</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+
+<span class="c1"># Apply word_tokenize to each element of the list called incoming_reports</span>
+<span class="n">tokenized_reports</span> <span class="o">=</span> <span class="p">[</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">report</span><span class="p">)</span> <span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">incoming_reports</span><span class="p">]</span>
+
+<span class="c1"># View tokenized_reports</span>
+<span class="n">tokenized_reports</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>[['We',
+  'are',
+  'attacking',
+  'on',
+  'their',
+  'left',
+  'flank',
+  'but',
+  'are',
+  'losing',
+  'many',
+  'men',
+  '.'],
+ ['We',
+  'can',
+  'not',
+  'see',
+  'the',
+  'enemy',
+  'army',
+  '.',
+  'Nothing',
+  'else',
+  'to',
+  'report',
+  '.'],
+ ['We',
+  'are',
+  'ready',
+  'to',
+  'attack',
+  'but',
+  'are',
+  'waiting',
+  'for',
+  'your',
+  'orders',
+  '.']]
+</pre></div>
+
+
+<div class="codehilite"><pre style="border: 1px solid rgb(222, 222, 222);"><span></span><span class="c1"># Import regex</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="c1"># Import string</span>
+<span class="kn">import</span> <span class="nn">string</span>
+
+
+<span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">'[</span><span class="si">%s</span><span class="s1">]'</span> <span class="o">%</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span> <span class="c1">#see documentation here: http://docs.python.org/2/library/string.html</span>
+
+<span class="n">tokenized_reports_no_punctuation</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">review</span> <span class="ow">in</span> <span class="n">tokenized_reports</span><span class="p">:</span>
+
+    <span class="n">new_review</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">review</span><span class="p">:</span> 
+        <span class="n">new_token</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">u</span><span class="s1">''</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">new_token</span> <span class="o">==</span> <span class="sa">u</span><span class="s1">''</span><span class="p">:</span>
+            <span class="n">new_review</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_token</span><span class="p">)</span>
+
+    <span class="n">tokenized_reports_no_punctuation</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_review</span><span class="p">)</span>
+
+<span class="n">tokenized_reports_no_punctuation</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>[['We',
+  'are',
+  'attacking',
+  'on',
+  'their',
+  'left',
+  'flank',
+  'but',
+  'are',
+  'losing',
+  'many',
+  'men'],
+ ['We',
+  'can',
+  'not',
+  'see',
+  'the',
+  'enemy',
+  'army',
+  'Nothing',
+  'else',
+  'to',
+  'report'],
+ ['We',
+  'are',
+  'ready',
+  'to',
+  'attack',
+  'but',
+  'are',
+  'waiting',
+  'for',
+  'your',
+  'orders']]
+</pre></div>
+
+
+<h2>Remove filler words</h2>
+<div class="codehilite"><pre style="border: 1px solid rgb(222, 222, 222);"><span></span><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+
+<span class="n">tokenized_reports_no_stopwords</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">tokenized_reports_no_punctuation</span><span class="p">:</span>
+    <span class="n">new_term_vector</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">report</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">'english'</span><span class="p">):</span>
+            <span class="n">new_term_vector</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="n">tokenized_reports_no_stopwords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_term_vector</span><span class="p">)</span>
+
+<span class="n">tokenized_reports_no_stopwords</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>[['We', 'attacking', 'left', 'flank', 'losing', 'many', 'men'],
+ ['We', 'see', 'enemy', 'army', 'Nothing', 'else', 'report'],
+ ['We', 'ready', 'attack', 'waiting', 'orders']]
+</pre></div>
+</div>
+    <aside>
+    <div class="bug-reporting__panel">
+        <h3>Find an error or bug?</h3>
+        <p>Everything on this site is available on GitHub. Head to <a href="https://github.com/chrisalbon/notes_on_data_science_machine_learning_and_artificial_intelligence/issues/new">and submit a suggested change</a>. You can also message me directly on <a href="https://twitter.com/chrisalbon">Twitter</a>.</p>
+    </div>
+    </aside>
+</section>
+
+    </div>
+    <!-- start of footer section -->
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">
+                </p><center>This project contains 488 pages and is available on <a href="https://github.com/chrisalbon/notes_on_data_science_machine_learning_and_artificial_intelligence">GitHub</a>.
+                <br>
+                Copyright © Chris Albon,
+                    <time datetime="2017">2017</time>.
+                </center>
+            <p></p>
+        </div>
+    </footer>
+
+    <!-- This jQuery line finds any span that contains code highlighting classes and then selects the parent <pre> tag and adds a border. This is done as a workaround to visually distinguish the code inputs and outputs -->
+    <script>
+        $( ".hll, .n, .c, .err, .k, .o, .cm, .cp, .c1, .cs, .gd, .ge, .gr, .gh, .gi, .go, .gp, .gs, .gu, .gt, .kc, .kd, .kn, .kp, .kr, .kt, .m, .s, .na, .nb, .nc, .no, .nd, .ni, .ne, .nf, .nl, .nn, .nt, .nv, .ow, .w, .mf, .mh, .mi, .mo, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss, .bp, .vc, .vg, .vi, .il" ).parent( "pre" ).css( "border", "1px solid #DEDEDE" );
+    </script>
+
+    <!-- Load Google Analytics -->
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-66582-32', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- End of Google Analytics -->
+
+    <!-- Bootstrap core JavaScript
+      ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./Cleaning Text - Python_files/bootstrap.min.js.download"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./Cleaning Text - Python_files/ie10-viewport-bug-workaround.js.download"></script>
+    <!-- Amazon OneLink -->
+    <script src="https://z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&amp;adInstanceId=946c0716-c88a-4df0-8944-a058be8c1e86"></script><div id="amzn_assoc_ad_div_adunit_0"></div>
+
+
+
+</body></html>

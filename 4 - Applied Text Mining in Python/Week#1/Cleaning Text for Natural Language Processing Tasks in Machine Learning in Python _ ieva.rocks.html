@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://ieva.rocks/2016/08/07/cleaning-text-for-nlp/ -->
+<html lang="en-US" class="gr__ieva_rocks"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width">
+	<title>Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python | ieva.rocks</title>
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="http://ieva.rocks/xmlrpc.php">
+	<!--[if lt IE 9]>
+	<script src="http://ieva.rocks/wp-content/themes/twentyfourteen/js/html5.js"></script>
+	<![endif]-->
+	<link rel="dns-prefetch" href="http://s0.wp.com/">
+<link rel="dns-prefetch" href="http://s.gravatar.com/">
+<link rel="dns-prefetch" href="http://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="ieva.rocks » Feed" href="http://ieva.rocks/feed/">
+<link rel="alternate" type="application/rss+xml" title="ieva.rocks » Comments Feed" href="http://ieva.rocks/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="ieva.rocks » Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python Comments Feed" href="http://ieva.rocks/2016/08/07/cleaning-text-for-nlp/feed/">
+		<script async="" src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/analytics.js.download"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ieva.rocks\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.4"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="twentyfourteen-jetpack-css" href="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/twentyfourteen.css" type="text/css" media="all">
+<link rel="stylesheet" id="estilo-css" href="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/estilo.css" type="text/css" media="all">
+<link rel="stylesheet" id="twentyfourteen-lato-css" href="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/genericons.css" type="text/css" media="all">
+<link rel="stylesheet" id="twentyfourteen-style-css" href="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/style.css" type="text/css" media="all">
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentyfourteen-ie-css'  href='http://ieva.rocks/wp-content/themes/twentyfourteen/css/ie.css?ver=20131205' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="jetpack_css-css" href="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/jquery.js.download"></script>
+<script type="text/javascript" src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/jquery-migrate.min.js.download"></script>
+<link rel="https://api.w.org/" href="http://ieva.rocks/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ieva.rocks/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ieva.rocks/wp-includes/wlwmanifest.xml"> 
+<link rel="next" title="Working With Numpy Matrices" href="http://ieva.rocks/2016/08/24/working-with-numpy-matrices/">
+<meta name="generator" content="WordPress 4.8.4">
+<link rel="canonical" href="http://ieva.rocks/2016/08/07/cleaning-text-for-nlp/">
+<link rel="shortlink" href="https://wp.me/p7N68C-8">
+<link rel="alternate" type="application/json+oembed" href="http://ieva.rocks/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fieva.rocks%2F2016%2F08%2F07%2Fcleaning-text-for-nlp%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://ieva.rocks/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fieva.rocks%2F2016%2F08%2F07%2Fcleaning-text-for-nlp%2F&amp;format=xml">
+
+<link rel="dns-prefetch" href="http://v0.wordpress.com/">
+<link rel="dns-prefetch" href="http://jetpack.wordpress.com/">
+<link rel="dns-prefetch" href="http://s0.wp.com/">
+<link rel="dns-prefetch" href="http://s1.wp.com/">
+<link rel="dns-prefetch" href="http://s2.wp.com/">
+<link rel="dns-prefetch" href="http://public-api.wordpress.com/">
+<link rel="dns-prefetch" href="http://0.gravatar.com/">
+<link rel="dns-prefetch" href="http://1.gravatar.com/">
+<link rel="dns-prefetch" href="http://2.gravatar.com/">
+<style type="text/css">img#wpstats{display:none}</style>		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+			<style type="text/css" id="twentyfourteen-header-css">
+			.site-title a {
+			color: #ffffff;
+		}
+		</style>
+	
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python">
+<meta property="og:url" content="http://ieva.rocks/2016/08/07/cleaning-text-for-nlp/">
+<meta property="og:description" content="Often when I work with text I need it to be clean. That is to remove gibberish or symbols/words I don’t need and to make all letters lowercase. For example, a “dirty” line of text…">
+<meta property="article:published_time" content="2016-08-07T17:50:31+00:00">
+<meta property="article:modified_time" content="2016-08-11T11:59:31+00:00">
+<meta property="og:site_name" content="ieva.rocks">
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:text:title" content="Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python">
+<meta name="twitter:card" content="summary">
+<!-- BEGIN GADWP v5.1.2.5 Universal Analytics - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-83276848-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- END GADWP Universal Analytics -->
+<link rel="stylesheet" type="text/css" href="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/prettify.css"><link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/services.css"></head>
+
+<body class="post-template-default single single-post postid-8 single-format-standard masthead-fixed full-width singular" data-gr-c-s-loaded="true">
+<div id="page" class="hfeed site">
+	
+	<header id="masthead" class="site-header" role="banner">
+		<div class="header-main">
+			<h1 class="site-title"><a href="http://ieva.rocks/" rel="home">ieva.rocks</a></h1>
+
+			<div class="search-toggle">
+				<a href="http://ieva.rocks/2016/08/07/cleaning-text-for-nlp/#search-container" class="screen-reader-text" aria-expanded="false" aria-controls="search-container">Search</a>
+			</div>
+
+			<nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
+				<button class="menu-toggle">Primary Menu</button>
+				<a class="screen-reader-text skip-link" href="http://ieva.rocks/2016/08/07/cleaning-text-for-nlp/#content">Skip to content</a>
+				<div id="primary-menu" class="nav-menu"><ul>
+<li class="page_item page-item-17"><a href="http://ieva.rocks/about-ieva/">About Ieva</a></li>
+</ul></div>
+			</nav>
+		</div>
+
+		<div id="search-container" class="search-box-wrapper hide">
+			<div class="search-box">
+				<form role="search" method="get" class="search-form" action="http://ieva.rocks/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search …" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Search">
+			</form>			</div>
+		</div>
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+			
+<article id="post-8" class="post-8 post type-post status-publish format-standard hentry category-ml category-nlp category-python category-text-processing">
+	
+	<header class="entry-header">
+				<div class="entry-meta">
+			<span class="cat-links"><a href="http://ieva.rocks/category/ml/" rel="category tag">ML</a>, <a href="http://ieva.rocks/category/nlp/" rel="category tag">NLP</a>, <a href="http://ieva.rocks/category/python/" rel="category tag">python</a>, <a href="http://ieva.rocks/category/text-processing/" rel="category tag">text processing</a></span>
+		</div>
+		<h1 class="entry-title">Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python</h1>
+		<div class="entry-meta">
+			<span class="entry-date"><a href="http://ieva.rocks/2016/08/07/cleaning-text-for-nlp/" rel="bookmark"><time class="entry-date" datetime="2016-08-07T17:50:31+00:00">August 7, 2016</time></a></span> <span class="byline"><span class="author vcard"><a class="url fn n" href="http://ieva.rocks/author/ieva/" rel="author">ieva</a></span></span>			<span class="comments-link"><a href="http://ieva.rocks/2016/08/07/cleaning-text-for-nlp/#respond">Leave a comment</a></span>
+					</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>Often when I work with text I need it to be clean. That is to&nbsp;remove gibberish or symbols/words I don’t need and to make all letters lowercase.</p>
+<p>For example, a “dirty” line of text:</p>
+<pre class="prettyprint prettyprinted" style=""><span class="pln">text </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">'This is dirty TEXT: A phone number +001234561234, moNey 3.333, some date like 09.08.2016 and weird Čárákterš.'</span><span class="pun">]</span></pre>
+<p>Using Python2.7:</p>
+<p>1) Read the line from list:<br>
+<code><!--?prettify linenums=true?--></code></p>
+<pre class="prettyprint prettyprinted" style=""><span class="kwd">for</span><span class="pln"> line </span><span class="kwd">in</span><span class="pln"> text</span><span class="pun">:</span><span class="pln">
+    </span><span class="com"># do something with line</span></pre>
+<p>or read from file:</p>
+<pre class="prettyprint prettyprinted" style=""><span class="kwd">with</span><span class="pln"> open</span><span class="pun">(</span><span class="str">'file.txt'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'r'</span><span class="pun">)</span><span class="pln"> </span><span class="kwd">as</span><span class="pln"> f</span><span class="pun">:</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> line </span><span class="kwd">in</span><span class="pln"> f</span><span class="pun">:</span><span class="pln">
+        </span><span class="com"># do something with line</span></pre>
+<p>2) Decode the line to utf8 from a string of bytes to work with special symbols:<br>
+<!--?prettify linenums=true?--></p>
+<pre class="prettyprint prettyprinted" style=""><span class="pln">line </span><span class="pun">=</span><span class="pln"> line</span><span class="pun">.</span><span class="pln">decode</span><span class="pun">(</span><span class="str">'utf8'</span><span class="pun">)</span></pre>
+<p>3) Remove the symbols you don’t need. With replace() you can stack as many replace operations as you want.</p>
+<pre class="prettyprint prettyprinted" style=""><span class="pln">line </span><span class="pun">=</span><span class="pln"> line</span><span class="pun">.</span><span class="pln">replace</span><span class="pun">(</span><span class="str">'+'</span><span class="pun">,</span><span class="pln"> </span><span class="str">' '</span><span class="pun">).</span><span class="pln">replace</span><span class="pun">(</span><span class="str">'.'</span><span class="pun">,</span><span class="pln"> </span><span class="str">' '</span><span class="pun">).</span><span class="pln">replace</span><span class="pun">(</span><span class="str">','</span><span class="pun">,</span><span class="pln"> </span><span class="str">' '</span><span class="pun">).</span><span class="pln">replace</span><span class="pun">(</span><span class="str">':'</span><span class="pun">,</span><span class="pln"> </span><span class="str">' '</span><span class="pun">)</span></pre>
+<p>4) Remove numbers. Here you can&nbsp;use regex \d+. Because dots have already been removed we only need to check for whole numbers.</p>
+<pre class="prettyprint prettyprinted" style=""><span class="pln">line </span><span class="pun">=</span><span class="pln"> re</span><span class="pun">.</span><span class="kwd">sub</span><span class="pun">(</span><span class="str">"(^|\W)\d+($|\W)"</span><span class="pun">,</span><span class="pln"> </span><span class="str">" "</span><span class="pun">,</span><span class="pln"> line</span><span class="pun">)</span></pre>
+<p>This regex matches the start of line ^ or whitespace, digits, end of line $ or whitespace to a space.</p>
+<p>Alternatively you can just check if a word evaluates to a number by a simple function – is_digit() attempts to turn a string into int. If it succeeds, then the function returns true.</p>
+<pre class="prettyprint prettyprinted" style=""><span class="kwd">def</span><span class="pln"> is_digit</span><span class="pun">(</span><span class="pln">word</span><span class="pun">):</span><span class="pln">
+    </span><span class="kwd">try</span><span class="pun">:</span><span class="pln">
+        </span><span class="kwd">int</span><span class="pun">(</span><span class="pln">word</span><span class="pun">)</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">True</span><span class="pln">
+    </span><span class="kwd">except</span><span class="pln"> </span><span class="typ">ValueError</span><span class="pun">:</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">False</span></pre>
+<p>Use this function on each word in the line by splitting the line on space with line.split(). New line array will hold only those words that are not numbers. At the end the array is joined together to a string.</p>
+<pre class="prettyprint prettyprinted" style=""><span class="pln">new_line </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[]</span><span class="pln">
+</span><span class="kwd">for</span><span class="pln"> word </span><span class="kwd">in</span><span class="pln"> line</span><span class="pun">.</span><span class="pln">split</span><span class="pun">():</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="kwd">not</span><span class="pln"> is_digit</span><span class="pun">(</span><span class="pln">word</span><span class="pun">):</span><span class="pln">
+        new_line</span><span class="pun">.</span><span class="pln">append</span><span class="pun">()</span><span class="pln">
+line </span><span class="pun">=</span><span class="pln"> </span><span class="str">" "</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">new_line</span><span class="pun">)</span></pre>
+<p>5) Now only lowercase and special characters remain. As lowercase only supports Latin letters, the special characters need to be turned to Latin. This can be done using <a href="https://pypi.python.org/pypi/transliterate/1.7.6" target="_blank">Transliterate Python package</a> or by hand. Here is a simple transliteration dictionary made from lists of character pairs:<br>
+<code><!--?prettify linenums=true?--></code></p>
+<pre class="prettyprint prettyprinted" style=""><span class="pln">cedilla2latin </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[[</span><span class="pln">u</span><span class="str">'Á'</span><span class="pun">,</span><span class="pln"> u</span><span class="str">'A'</span><span class="pun">],</span><span class="pln"> </span><span class="pun">[</span><span class="pln">u</span><span class="str">'á'</span><span class="pun">,</span><span class="pln"> u</span><span class="str">'a'</span><span class="pun">],</span><span class="pln"> </span><span class="pun">[</span><span class="pln">u</span><span class="str">'Č'</span><span class="pun">,</span><span class="pln"> u</span><span class="str">'C'</span><span class="pun">],</span><span class="pln"> </span><span class="pun">[</span><span class="pln">u</span><span class="str">'č'</span><span class="pun">,</span><span class="pln"> u</span><span class="str">'c'</span><span class="pun">],</span><span class="pln"> </span><span class="pun">[</span><span class="pln">u</span><span class="str">'Š'</span><span class="pun">,</span><span class="pln"> u</span><span class="str">'S'</span><span class="pun">],</span><span class="pln"> </span><span class="pun">[</span><span class="pln">u</span><span class="str">'š'</span><span class="pun">,</span><span class="pln"> u</span><span class="str">'s'</span><span class="pun">]]</span><span class="pln">
+tr </span><span class="pun">=</span><span class="pln"> dict</span><span class="pun">([(</span><span class="pln">a</span><span class="pun">[</span><span class="lit">0</span><span class="pun">],</span><span class="pln"> a</span><span class="pun">[</span><span class="lit">1</span><span class="pun">])</span><span class="pln"> </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="pln">a</span><span class="pun">)</span><span class="pln"> </span><span class="kwd">in</span><span class="pln"> cedilla2latin</span><span class="pun">])</span></pre>
+<p>In this way you can have multiple simbols to stand for one special symbol (like German [u’ä’, u’ae’]).<br>
+With the dictionary I can recreate letters in Latin:<br>
+<!--?prettify linenums=true?--></p>
+<pre class="prettyprint prettyprinted" style=""><span class="kwd">def</span><span class="pln"> transliterate</span><span class="pun">(</span><span class="pln">line</span><span class="pun">):</span><span class="pln">
+    new_line </span><span class="pun">=</span><span class="pln"> </span><span class="str">""</span><span class="pln">
+        </span><span class="kwd">for</span><span class="pln"> letter </span><span class="kwd">in</span><span class="pln"> line</span><span class="pun">:</span><span class="pln">
+            </span><span class="kwd">if</span><span class="pln"> letter </span><span class="kwd">in</span><span class="pln"> tr</span><span class="pun">:</span><span class="pln">
+                new_line </span><span class="pun">+=</span><span class="pln"> tr</span><span class="pun">[</span><span class="pln">letter</span><span class="pun">]</span><span class="pln">
+            </span><span class="kwd">else</span><span class="pun">:</span><span class="pln">
+                new_line </span><span class="pun">+=</span><span class="pln"> letter
+    </span><span class="kwd">return</span><span class="pln"> new_line</span></pre>
+<p>And call the transliterate function:</p>
+<pre class="prettyprint prettyprinted" style=""><span class="pln">line </span><span class="pun">=</span><span class="pln"> transliterate</span><span class="pun">(</span><span class="pln">line</span><span class="pun">)</span></pre>
+<p>6) After clearing away unnecessary symbols, finally I can lowercase the line:<br>
+<!--?prettify linenums=true?--></p>
+<pre class="prettyprint prettyprinted" style=""><span class="pln">line </span><span class="pun">=</span><span class="pln"> line</span><span class="pun">.</span><span class="pln">lower</span><span class="pun">()</span></pre>
+<p>And finally the line is reduced to simple Latin characters.</p>
+<pre class="prettyprint prettyprinted" style=""><span class="kwd">print</span><span class="pln"> line
+</span><span class="pun">&gt;&gt;</span><span class="pln"> </span><span class="kwd">this</span><span class="pln"> </span><span class="kwd">is</span><span class="pln"> dirty text a phone number money some date like </span><span class="kwd">and</span><span class="pln"> weird carakters</span></pre>
+<p>If you need to retain some numbers or check for other fields then go ahead and write more specific <a href="https://docs.python.org/2/library/re.html">regexes</a>. &nbsp;However, regexes in Python use backtracking that makes them n-squared in terms of speed. This can slow you down especially if you are working with millions of lines.</p>
+<p>As a side note a more general cleaning method that leaves only Latin characters can be to check for the <a href="http://www.asciitable.com/">ASCII </a>value of each letter with ord().</p>
+<pre class="prettyprint prettyprinted" style=""><span class="kwd">def</span><span class="pln"> get_latin</span><span class="pun">(</span><span class="pln">line</span><span class="pun">):</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="str">' '</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="str">''</span><span class="pun">.</span><span class="pln">join</span><span class="pun">([</span><span class="pln">i </span><span class="kwd">if</span><span class="pln"> ord</span><span class="pun">(</span><span class="pln">i</span><span class="pun">)</span><span class="pln"> </span><span class="pun">&gt;=</span><span class="lit">65</span><span class="pln"> </span><span class="kwd">and</span><span class="pln"> ord</span><span class="pun">(</span><span class="pln">i</span><span class="pun">)</span><span class="pln"> </span><span class="pun">&lt;=</span><span class="lit">90</span><span class="pln"> </span><span class="kwd">or</span><span class="pln">  ord</span><span class="pun">(</span><span class="pln">i</span><span class="pun">)</span><span class="pln"> </span><span class="pun">&gt;=</span><span class="pln"> </span><span class="lit">97</span><span class="pln"> </span><span class="kwd">and</span><span class="pln"> ord</span><span class="pun">(</span><span class="pln">i</span><span class="pun">)</span><span class="pln"> </span><span class="pun">&lt;=</span><span class="pln"> </span><span class="lit">122</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="str">' '</span><span class="pln"> </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> line</span><span class="pun">]).</span><span class="pln">split</span><span class="pun">())</span></pre>
+<p>Full code of the above description is available below or <a href="https://gist.github.com/IevaZarina/251215fd762d95ac973cd90bff32ccb3">here</a>:</p>
+<p><script src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/251215fd762d95ac973cd90bff32.download"></script><link rel="stylesheet" href="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/gist-embed-424076ff466a7e89030092.css"></p><div id="gist38606885" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-text_cleaning-py" class="file">
+    
+
+  <div itemprop="text" class="blob-wrapper data type-python">
+      <table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-text_cleaning-py-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-text_cleaning-py-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> -*- coding: utf-8 -*-</span></td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-text_cleaning-py-LC2" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Ieva Zarina, 2016, licensed under the Apache 2.0 licnece</span></td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-text_cleaning-py-LC3" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-text_cleaning-py-LC4" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> re</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-text_cleaning-py-LC5" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-text_cleaning-py-LC6" class="blob-code blob-code-inner js-file-line"><span class="pl-k">def</span> <span class="pl-en">is_digit</span>(<span class="pl-smi">word</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-text_cleaning-py-LC7" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">try</span>:</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-text_cleaning-py-LC8" class="blob-code blob-code-inner js-file-line">        <span class="pl-c1">int</span>(word)</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-text_cleaning-py-LC9" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> <span class="pl-c1">True</span></td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-text_cleaning-py-LC10" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">except</span> <span class="pl-c1">ValueError</span>:</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-text_cleaning-py-LC11" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> <span class="pl-c1">False</span></td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-text_cleaning-py-LC12" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-text_cleaning-py-LC13" class="blob-code blob-code-inner js-file-line">cedilla2latin <span class="pl-k">=</span> [[<span class="pl-s"><span class="pl-k">u</span><span class="pl-pds">'</span>Á<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-k">u</span><span class="pl-pds">'</span>A<span class="pl-pds">'</span></span>], [<span class="pl-s"><span class="pl-k">u</span><span class="pl-pds">'</span>á<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-k">u</span><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>], [<span class="pl-s"><span class="pl-k">u</span><span class="pl-pds">'</span>Č<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-k">u</span><span class="pl-pds">'</span>C<span class="pl-pds">'</span></span>], [<span class="pl-s"><span class="pl-k">u</span><span class="pl-pds">'</span>č<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-k">u</span><span class="pl-pds">'</span>c<span class="pl-pds">'</span></span>], [<span class="pl-s"><span class="pl-k">u</span><span class="pl-pds">'</span>Š<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-k">u</span><span class="pl-pds">'</span>S<span class="pl-pds">'</span></span>], [<span class="pl-s"><span class="pl-k">u</span><span class="pl-pds">'</span>š<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-k">u</span><span class="pl-pds">'</span>s<span class="pl-pds">'</span></span>]]</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-text_cleaning-py-LC14" class="blob-code blob-code-inner js-file-line">tr <span class="pl-k">=</span> <span class="pl-c1">dict</span>([(a[<span class="pl-c1">0</span>], a[<span class="pl-c1">1</span>]) <span class="pl-k">for</span> (a) <span class="pl-k">in</span> cedilla2latin])</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="file-text_cleaning-py-LC15" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="file-text_cleaning-py-LC16" class="blob-code blob-code-inner js-file-line"><span class="pl-k">def</span> <span class="pl-en">transliterate</span>(<span class="pl-smi">line</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="file-text_cleaning-py-LC17" class="blob-code blob-code-inner js-file-line">    new_line <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L18" class="blob-num js-line-number" data-line-number="18"></td>
+        <td id="file-text_cleaning-py-LC18" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> letter <span class="pl-k">in</span> line:</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="file-text_cleaning-py-LC19" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> letter <span class="pl-k">in</span> tr:</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L20" class="blob-num js-line-number" data-line-number="20"></td>
+        <td id="file-text_cleaning-py-LC20" class="blob-code blob-code-inner js-file-line">            new_line <span class="pl-k">+=</span> tr[letter]</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L21" class="blob-num js-line-number" data-line-number="21"></td>
+        <td id="file-text_cleaning-py-LC21" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L22" class="blob-num js-line-number" data-line-number="22"></td>
+        <td id="file-text_cleaning-py-LC22" class="blob-code blob-code-inner js-file-line">            new_line <span class="pl-k">+=</span> letter</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L23" class="blob-num js-line-number" data-line-number="23"></td>
+        <td id="file-text_cleaning-py-LC23" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> new_line</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L24" class="blob-num js-line-number" data-line-number="24"></td>
+        <td id="file-text_cleaning-py-LC24" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L25" class="blob-num js-line-number" data-line-number="25"></td>
+        <td id="file-text_cleaning-py-LC25" class="blob-code blob-code-inner js-file-line">text <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">'</span>This is dirty TEXT: A phone number +001234561234, moNey 3.333, some date like 09.08.2016 and weird Čárákterš.<span class="pl-pds">'</span></span>]</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L26" class="blob-num js-line-number" data-line-number="26"></td>
+        <td id="file-text_cleaning-py-LC26" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L27" class="blob-num js-line-number" data-line-number="27"></td>
+        <td id="file-text_cleaning-py-LC27" class="blob-code blob-code-inner js-file-line"><span class="pl-k">for</span> line <span class="pl-k">in</span> text:</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L28" class="blob-num js-line-number" data-line-number="28"></td>
+        <td id="file-text_cleaning-py-LC28" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> decode line to worrk with utf8 symbols</span></td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L29" class="blob-num js-line-number" data-line-number="29"></td>
+        <td id="file-text_cleaning-py-LC29" class="blob-code blob-code-inner js-file-line">    line <span class="pl-k">=</span> line.decode(<span class="pl-s"><span class="pl-pds">'</span>utf8<span class="pl-pds">'</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L30" class="blob-num js-line-number" data-line-number="30"></td>
+        <td id="file-text_cleaning-py-LC30" class="blob-code blob-code-inner js-file-line">    line <span class="pl-k">=</span> line.replace(<span class="pl-s"><span class="pl-pds">'</span>+<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>).replace(<span class="pl-s"><span class="pl-pds">'</span>.<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>).replace(<span class="pl-s"><span class="pl-pds">'</span>,<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>).replace(<span class="pl-s"><span class="pl-pds">'</span>:<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L31" class="blob-num js-line-number" data-line-number="31"></td>
+        <td id="file-text_cleaning-py-LC31" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> remove digits with regex</span></td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L32" class="blob-num js-line-number" data-line-number="32"></td>
+        <td id="file-text_cleaning-py-LC32" class="blob-code blob-code-inner js-file-line">    line <span class="pl-k">=</span> re.sub(<span class="pl-s"><span class="pl-pds">"</span>(^|\W)\d+($|\W)<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span>, line)</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L33" class="blob-num js-line-number" data-line-number="33"></td>
+        <td id="file-text_cleaning-py-LC33" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> OR remove digits with casting to int</span></td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L34" class="blob-num js-line-number" data-line-number="34"></td>
+        <td id="file-text_cleaning-py-LC34" class="blob-code blob-code-inner js-file-line">    new_line <span class="pl-k">=</span> []</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L35" class="blob-num js-line-number" data-line-number="35"></td>
+        <td id="file-text_cleaning-py-LC35" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> word <span class="pl-k">in</span> line.split():</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L36" class="blob-num js-line-number" data-line-number="36"></td>
+        <td id="file-text_cleaning-py-LC36" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> <span class="pl-k">not</span> is_digit(word):</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L37" class="blob-num js-line-number" data-line-number="37"></td>
+        <td id="file-text_cleaning-py-LC37" class="blob-code blob-code-inner js-file-line">            new_line.append(word)</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L38" class="blob-num js-line-number" data-line-number="38"></td>
+        <td id="file-text_cleaning-py-LC38" class="blob-code blob-code-inner js-file-line">    line <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span>.join(new_line)</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L39" class="blob-num js-line-number" data-line-number="39"></td>
+        <td id="file-text_cleaning-py-LC39" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> transliterate to Latin characters</span></td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L40" class="blob-num js-line-number" data-line-number="40"></td>
+        <td id="file-text_cleaning-py-LC40" class="blob-code blob-code-inner js-file-line">    line <span class="pl-k">=</span> transliterate(line)</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L41" class="blob-num js-line-number" data-line-number="41"></td>
+        <td id="file-text_cleaning-py-LC41" class="blob-code blob-code-inner js-file-line">    line <span class="pl-k">=</span> line.lower()</td>
+      </tr>
+      <tr>
+        <td id="file-text_cleaning-py-L42" class="blob-num js-line-number" data-line-number="42"></td>
+        <td id="file-text_cleaning-py-LC42" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">print</span> line</td>
+      </tr>
+</tbody></table>
+
+
+  </div>
+
+  </div>
+  
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/IevaZarina/251215fd762d95ac973cd90bff32ccb3/raw/8c2bc80216ef601c3a9a2aef07b77afee2325b0e/text_cleaning.py" style="float:right">view raw</a>
+        <a href="https://gist.github.com/IevaZarina/251215fd762d95ac973cd90bff32ccb3#file-text_cleaning-py">text_cleaning.py</a>
+        hosted with <img draggable="false" class="emoji" alt="❤" src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/2764.svg"> by <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+<p></p>
+	</div><!-- .entry-content -->
+	
+	</article><!-- #post-## -->
+	<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text">Post navigation</h1>
+		<div class="nav-links">
+			<a href="http://ieva.rocks/2016/08/24/working-with-numpy-matrices/" rel="next"><span class="meta-nav">Next Post</span>Working With Numpy Matrices</a>		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	
+<div id="comments" class="comments-area">
+
+	
+	
+		<div id="respond" class="comment-respond">
+							<h3 id="reply-title" class="comment-reply-title">Leave a Reply					<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://ieva.rocks/2016/08/07/cleaning-text-for-nlp/#respond" style="display:none;">Cancel reply</a></small>
+				</h3>
+						<form id="commentform" class="comment-form">
+				<iframe src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/saved_resource.html" style="width: 100%; height: 58px; border: 0px;" name="jetpack_remote_comment" class="jetpack_remote_comment" id="jetpack_remote_comment" scrolling="no"></iframe>
+				<!--[if !IE]><!-->
+				<script>
+					document.addEventListener('DOMContentLoaded', function () {
+						var commentForms = document.getElementsByClassName('jetpack_remote_comment');
+						for (var i = 0; i < commentForms.length; i++) {
+							commentForms[i].allowTransparency = false;
+							commentForms[i].scrolling = 'no';
+						}
+					});
+				</script>
+				<!--<![endif]-->
+			<input id="ak_js" name="ak_js" type="hidden" value="1514274869895"></form>
+		</div>
+
+		
+		<input type="hidden" name="comment_parent" id="comment_parent" value="">
+
+		
+</div><!-- #comments -->
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+<div id="secondary">
+		<h2 class="site-description">Coding notes </h2>
+	
+	
+		<div id="primary-sidebar" class="primary-sidebar widget-area" role="complementary">
+		<aside id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="http://ieva.rocks/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search …" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Search">
+			</form></aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h1 class="widget-title">Recent Posts</h1>		<ul>
+					<li>
+				<a href="http://ieva.rocks/2017/11/19/basic-docker-command-set/">Basic Docker command set</a>
+						</li>
+					<li>
+				<a href="http://ieva.rocks/2017/06/16/simple-knn-implementation-in-python-2-7/">Simple KNN implementation in Python 2.7</a>
+						</li>
+					<li>
+				<a href="http://ieva.rocks/2016/11/24/keyword-matching-with-aho-corasick/">Keyword matching with Aho-Corasick</a>
+						</li>
+					<li>
+				<a href="http://ieva.rocks/2016/09/12/generating-graphs-on-server-with-no-ui-in-python/">Generating Graphs on Server with no UI in Pyhton</a>
+						</li>
+					<li>
+				<a href="http://ieva.rocks/2016/08/29/dealing-with-json-encoded-as-json/">Dealing with JSON Encoded as JSON</a>
+						</li>
+				</ul>
+		</aside>		<aside id="recent-comments-2" class="widget widget_recent_comments"><h1 class="widget-title">Recent Comments</h1><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">ieva</span> on <a href="http://ieva.rocks/2016/08/25/iris_dataset_and_xgboost_simple_tutorial/#comment-7">Iris Dataset and Xgboost Simple Tutorial</a></li><li class="recentcomments"><span class="comment-author-link"><a href="https://plus.google.com/102262886696900579953" rel="external nofollow" class="url">Buck Woody</a></span> on <a href="http://ieva.rocks/2016/08/25/iris_dataset_and_xgboost_simple_tutorial/#comment-6">Iris Dataset and Xgboost Simple Tutorial</a></li><li class="recentcomments"><span class="comment-author-link">ieva</span> on <a href="http://ieva.rocks/2016/08/25/iris_dataset_and_xgboost_simple_tutorial/#comment-5">Iris Dataset and Xgboost Simple Tutorial</a></li><li class="recentcomments"><span class="comment-author-link">Atif</span> on <a href="http://ieva.rocks/2016/08/25/iris_dataset_and_xgboost_simple_tutorial/#comment-4">Iris Dataset and Xgboost Simple Tutorial</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.digitaljob.org/blog/7-more-steps-to-mastering-machine-learning-with-python/" rel="external nofollow" class="url">7 More Steps to Mastering Machine Learning With Python | Digitaljob</a></span> on <a href="http://ieva.rocks/2016/08/25/iris_dataset_and_xgboost_simple_tutorial/#comment-3">Iris Dataset and Xgboost Simple Tutorial</a></li></ul></aside><aside id="archives-2" class="widget widget_archive"><h1 class="widget-title">Archives</h1>		<ul>
+			<li><a href="http://ieva.rocks/2017/11/">November 2017</a></li>
+	<li><a href="http://ieva.rocks/2017/06/">June 2017</a></li>
+	<li><a href="http://ieva.rocks/2016/11/">November 2016</a></li>
+	<li><a href="http://ieva.rocks/2016/09/">September 2016</a></li>
+	<li><a href="http://ieva.rocks/2016/08/">August 2016</a></li>
+		</ul>
+		</aside><aside id="categories-2" class="widget widget_categories"><h1 class="widget-title">Categories</h1>		<ul>
+	<li class="cat-item cat-item-8"><a href="http://ieva.rocks/category/anaconda/">anaconda</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://ieva.rocks/category/docker/">docker</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://ieva.rocks/category/json/">JSON</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://ieva.rocks/category/linux/">linux</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://ieva.rocks/category/ml/">ML</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://ieva.rocks/category/nlp/">NLP</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://ieva.rocks/category/numpy/">numpy</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://ieva.rocks/category/plot/">plot</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://ieva.rocks/category/pyahocorasick/">pyahocorasick</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://ieva.rocks/category/python/">python</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://ieva.rocks/category/scikit-learn/">scikit-learn</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://ieva.rocks/category/text-processing/">text processing</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://ieva.rocks/category/xgboost/">xgboost</a>
+</li>
+		</ul>
+</aside><aside id="meta-2" class="widget widget_meta"><h1 class="widget-title">Meta</h1>			<ul>
+						<li><a href="http://ieva.rocks/wp-login.php">Log in</a></li>
+			<li><a href="http://ieva.rocks/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://ieva.rocks/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>			</ul>
+			</aside>	</div><!-- #primary-sidebar -->
+	</div><!-- #secondary -->
+
+		</div><!-- #main -->
+
+		<footer id="colophon" class="site-footer" role="contentinfo">
+
+			
+			<div class="site-info">
+								<a href="https://wordpress.org/">Proudly powered by WordPress</a>
+			</div><!-- .site-info -->
+		</footer><!-- #colophon -->
+	</div><!-- #page -->
+
+		<div style="display:none">
+	</div>
+<script type="text/javascript" src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/devicepx-jetpack.js.download"></script>
+<script type="text/javascript" src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/pretty.js.download"></script>
+<script type="text/javascript" src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/gprofiles.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/wpgroho.js.download"></script>
+<script type="text/javascript" src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/comment-reply.min.js.download"></script>
+<script type="text/javascript" src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/functions.js.download"></script>
+<script type="text/javascript" src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/wp-embed.min.js.download"></script>
+<script type="text/javascript" src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/form.js.download"></script>
+
+		<!--[if IE]>
+		<script type="text/javascript">
+			if ( 0 === window.location.hash.indexOf( '#comment-' ) ) {
+				// window.location.reload() doesn't respect the Hash in IE
+				window.location.hash = window.location.hash;
+			}
+		</script>
+		<![endif]-->
+		<script type="text/javascript">
+			(function () {
+				var comm_par_el = document.getElementById( 'comment_parent' ),
+					comm_par = ( comm_par_el && comm_par_el.value ) ? comm_par_el.value : '',
+					frame = document.getElementById( 'jetpack_remote_comment' ),
+					tellFrameNewParent;
+
+				tellFrameNewParent = function () {
+					if ( comm_par ) {
+						frame.src = "http://jetpack.wordpress.com/jetpack-comment/?blogid=115136022&postid=8&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=1&show_avatars=1&avatar_default=mystery&greeting=Leave+a+Reply&greeting_reply=Leave+a+Reply+to+%25s&color_scheme=light&lang=en_US&jetpack_version=5.5&sig=8ef3820ad85a737e7f009ec795263dddada80799#parent=http%3A%2F%2Fieva.rocks%2F2016%2F08%2F07%2Fcleaning-text-for-nlp%2F" + '&replytocom=' + parseInt( comm_par, 10 ).toString();
+					} else {
+						frame.src = "http://jetpack.wordpress.com/jetpack-comment/?blogid=115136022&postid=8&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=1&show_avatars=1&avatar_default=mystery&greeting=Leave+a+Reply&greeting_reply=Leave+a+Reply+to+%25s&color_scheme=light&lang=en_US&jetpack_version=5.5&sig=8ef3820ad85a737e7f009ec795263dddada80799#parent=http%3A%2F%2Fieva.rocks%2F2016%2F08%2F07%2Fcleaning-text-for-nlp%2F";
+					}
+				};
+
+				
+				if ( 'undefined' !== typeof addComment ) {
+					addComment._Jetpack_moveForm = addComment.moveForm;
+
+					addComment.moveForm = function ( commId, parentId, respondId, postId ) {
+						var returnValue = addComment._Jetpack_moveForm( commId, parentId, respondId, postId ),
+							cancelClick, cancel;
+
+						if ( false === returnValue ) {
+							cancel = document.getElementById( 'cancel-comment-reply-link' );
+							cancelClick = cancel.onclick;
+							cancel.onclick = function () {
+								var cancelReturn = cancelClick.call( this );
+								if ( false !== cancelReturn ) {
+									return cancelReturn;
+								}
+
+								if ( ! comm_par ) {
+									return cancelReturn;
+								}
+
+								comm_par = 0;
+
+								tellFrameNewParent();
+
+								return cancelReturn;
+							};
+						}
+
+						if ( comm_par == parentId ) {
+							return returnValue;
+						}
+
+						comm_par = parentId;
+
+						tellFrameNewParent();
+
+						return returnValue;
+					};
+				}
+
+				
+				// Do the post message bit after the dom has loaded.
+				document.addEventListener( 'DOMContentLoaded', function () {
+					var iframe_url = "http:\/\/jetpack.wordpress.com";
+					if ( window.postMessage ) {
+						if ( document.addEventListener ) {
+							window.addEventListener( 'message', function ( event ) {
+								var origin = event.origin.replace( /^http:\/\//i, 'https://' );
+								if ( iframe_url.replace( /^http:\/\//i, 'https://' ) !== origin ) {
+									return;
+								}
+								jQuery( frame ).height( event.data );
+							});
+						} else if ( document.attachEvent ) {
+							window.attachEvent( 'message', function ( event ) {
+								var origin = event.origin.replace( /^http:\/\//i, 'https://' );
+								if ( iframe_url.replace( /^http:\/\//i, 'https://' ) !== origin ) {
+									return;
+								}
+								jQuery( frame ).height( event.data );
+							});
+						}
+					}
+				})
+
+			})();
+		</script>
+
+		<script type="text/javascript" src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/e-201752.js.download" async="" defer=""></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:5.5',blog:'115136022',post:'8',tz:'0',srv:'ieva.rocks'} ]);
+	_stq.push([ 'clickTrackerInit', '115136022', '8' ]);
+</script>
+
+
+<!-- Dynamic page generated in 0.369 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2017-12-26 07:54:27 -->
+
+<!-- Compression = gzip --><img src="./Cleaning Text for Natural Language Processing Tasks in Machine Learning in Python _ ieva.rocks_files/g.gif" alt=":)" width="6" height="5" id="wpstats"></body></html>
